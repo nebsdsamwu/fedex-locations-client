@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GlobalShipAddressWebServiceClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LocationsSearchWebServiceClient_LocationsWebReference_SearchLocationsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://wsbeta.fedex.com:443/web-services/locs</Value>
+    </Setting>
+    <Setting Name="GlobalShipAddressWebServiceClient_WebReference_LocationsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://wsbeta.fedex.com:443/web-services/locs</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
