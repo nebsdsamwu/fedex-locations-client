@@ -137,8 +137,8 @@ namespace LocationsSearchWebServiceClient
             request.Constraints.ResultsFilters = new LocationSearchFilterType[1];
             request.Constraints.ResultsFilters[0] = LocationSearchFilterType.EXCLUDE_LOCATIONS_OUTSIDE_STATE_OR_PROVINCE;
             //
+            // These is [AND] logic, include GROUND will reduce the results a lot.  
             request.Constraints.RequiredLocationAttributes = new LocationAttributesType[3];
-            //request.Constraints.RequiredLocationAttributes[0] = LocationAttributesType.ACCEPTS_CASH;
             request.Constraints.RequiredLocationAttributes[0] = LocationAttributesType.SATURDAY_EXPRESS_HOLD_AT_LOCATION;
             request.Constraints.RequiredLocationAttributes[1] = LocationAttributesType.WEEKDAY_EXPRESS_HOLD_AT_LOCATION;
             //request.Constraints.RequiredLocationAttributes[2] = LocationAttributesType.WEEKDAY_GROUND_HOLD_AT_LOCATION;
@@ -148,10 +148,11 @@ namespace LocationsSearchWebServiceClient
             request.Constraints.LocationContentOptions = new LocationContentOptionType[1];
             //request.Constraints.LocationContentOptions[0] = LocationContentOptionType.HOLIDAYS;
             //
+            // This is [OR] logic.
             request.Constraints.LocationTypesToInclude = new FedExLocationType[3];
             request.Constraints.LocationTypesToInclude[0] = FedExLocationType.FEDEX_AUTHORIZED_SHIP_CENTER;
             request.Constraints.LocationTypesToInclude[1] = FedExLocationType.FEDEX_EXPRESS_STATION;
-            request.Constraints.LocationTypesToInclude[2] = FedExLocationType.FEDEX_OFFICE;
+            request.Constraints.LocationTypesToInclude[2] = FedExLocationType.FEDEX_OFFICE; // This includes most of the first two types.
 
         }
 
