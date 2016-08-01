@@ -103,7 +103,7 @@ namespace LocationsSearchWebServiceClient
         private static void SetAddress(SearchLocationsRequest request)
         {
             request.Address = new Address();
-            request.Address.StreetLines = new string[1] { "Address Line 1" };
+            request.Address.StreetLines = new string[1] { "17560 Rowland St" };
             request.Address.City = "City of Industry";
             request.Address.StateOrProvinceCode = "CA";
             request.Address.PostalCode = "91748";
@@ -129,26 +129,30 @@ namespace LocationsSearchWebServiceClient
         {
             request.Constraints = new SearchLocationConstraints();
             request.Constraints.RadiusDistance = new Distance();
-            request.Constraints.RadiusDistance.Value = new Decimal(50.0);
+            request.Constraints.RadiusDistance.Value = new Decimal(25.0);
             request.Constraints.RadiusDistance.ValueSpecified = true;
-            request.Constraints.RadiusDistance.Units = DistanceUnits.KM;
+            request.Constraints.RadiusDistance.Units = DistanceUnits.MI;
             request.Constraints.RadiusDistance.UnitsSpecified = true;
             //
             request.Constraints.ResultsFilters = new LocationSearchFilterType[1];
             request.Constraints.ResultsFilters[0] = LocationSearchFilterType.EXCLUDE_LOCATIONS_OUTSIDE_STATE_OR_PROVINCE;
             //
-            request.Constraints.RequiredLocationAttributes = new LocationAttributesType[2];
+            request.Constraints.RequiredLocationAttributes = new LocationAttributesType[3];
+            //request.Constraints.RequiredLocationAttributes[0] = LocationAttributesType.ACCEPTS_CASH;
             request.Constraints.RequiredLocationAttributes[0] = LocationAttributesType.SATURDAY_EXPRESS_HOLD_AT_LOCATION;
             request.Constraints.RequiredLocationAttributes[1] = LocationAttributesType.WEEKDAY_EXPRESS_HOLD_AT_LOCATION;
+            //request.Constraints.RequiredLocationAttributes[2] = LocationAttributesType.WEEKDAY_GROUND_HOLD_AT_LOCATION;
             //
-            request.Constraints.ResultsRequested = "5";
+            request.Constraints.ResultsRequested = "20";
             //
             request.Constraints.LocationContentOptions = new LocationContentOptionType[1];
-            request.Constraints.LocationContentOptions[0] = LocationContentOptionType.HOLIDAYS;
+            //request.Constraints.LocationContentOptions[0] = LocationContentOptionType.HOLIDAYS;
             //
-            request.Constraints.LocationTypesToInclude = new FedExLocationType[2];
+            request.Constraints.LocationTypesToInclude = new FedExLocationType[3];
             request.Constraints.LocationTypesToInclude[0] = FedExLocationType.FEDEX_AUTHORIZED_SHIP_CENTER;
             request.Constraints.LocationTypesToInclude[1] = FedExLocationType.FEDEX_EXPRESS_STATION;
+            request.Constraints.LocationTypesToInclude[2] = FedExLocationType.FEDEX_OFFICE;
+
         }
 
         private static void ShowSearchLocationsReply(SearchLocationsReply reply)
@@ -223,9 +227,9 @@ namespace LocationsSearchWebServiceClient
                         Console.WriteLine("  {0}", attribute);
                     }
                 }
-                ShowHours(locationDetail.NormalHours, "Normal Hours");
-                ShowHours(locationDetail.HoursForEffectiveDate, "Hours for effective date");
-                ShowCarrierDetails(locationDetail.CarrierDetails);
+                //ShowHours(locationDetail.NormalHours, "Normal Hours");
+                //ShowHours(locationDetail.HoursForEffectiveDate, "Hours for effective date");
+                //ShowCarrierDetails(locationDetail.CarrierDetails);
             }
         }
 
